@@ -1,8 +1,10 @@
 
 🔗 CSEg5304 Blockchain Project — Solidity Smart Contract Development
+
 📚 Course Chosen
 Alchemy University – Learn Solidity
  Beginner-friendly course for mastering the fundamentals of Solidity and smart contract development on the Ethereum blockchain.
+
 
 🧑‍🤝‍🧑 Group Members
 Member 1: [Full Name] (GitHub: @username)
@@ -21,6 +23,7 @@ Member 5: [Full Name] (GitHub: @username)
 
 
 📌 All members have successfully signed up for the course, completed the required modules, and contributed to this repository collaboratively.
+
 
 📁 Repository Structure
 . 
@@ -61,6 +64,7 @@ Supplementary learning resources
 
 
 
+
 📅 Deadline
 Submission Due: May 6, 2025
  Status: ✅ Completed and Submitted
@@ -76,6 +80,7 @@ View Screenshots/ to track individual and group progress visually.
 
 
 Check Resources/ for extra learning material related to Solidity and Ethereum.
+
 
 
 
