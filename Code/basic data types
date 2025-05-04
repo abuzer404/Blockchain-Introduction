@@ -1,0 +1,25 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract BasicDataTypesExample {
+    // Boolean type
+    bool public isActive = true;
+
+    // Signed integer type
+    int public signedNumber = -42;
+
+    // Unsigned integer type
+    uint public unsignedNumber = 100;
+
+    // Address type
+    address public owner = msg.sender;
+
+    // String type
+    string public greeting = "Welcome to Solidity!";
+
+    // Bytes type (fixed size)
+    bytes32 public fixedData = "SolidityBytes";
+
+    // Dynamic bytes array
+    bytes public dynamicData = "Hello";
+} 
