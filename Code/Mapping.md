@@ -1,0 +1,160 @@
+# Add member
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract Contract {
+    mapping(address => bool) private members;
+
+    function addMember(address _member) external {
+        members[_member] = true;
+    }
+
+    function removeMember(address _member) external {
+        members[_member] = false;
+    }
+
+    function isMember(address _addr) external view returns (bool) {
+        return members[_addr];
+    }
+}
+
+# is memeber
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract Contract {
+    mapping(address => bool) private members;
+
+    function addMember(address _member) external {
+        members[_member] = true;
+    }
+
+    function removeMember(address _member) external {
+        members[_member] = false;
+    }
+
+    function isMember(address _addr) external view returns (bool) {
+        return members[_addr];
+    }
+}
+
+# remove member
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract Contract {
+    mapping(address => bool) private members;
+
+    function addMember(address _member) external {
+        members[_member] = true;
+    }
+
+    function removeMember(address _member) external {
+        members[_member] = false;
+    }
+
+    function isMember(address _addr) external view returns (bool) {
+        return members[_addr];
+    }
+}
+
+# map structs
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract Contract {
+    struct User {
+        uint balance;
+        bool isActive;
+    }
+
+    mapping(address => User) public users;
+    mapping(address => bool) public isUser;
+
+    function createUser() public {
+        require(!isUser[msg.sender], "User already exists.");
+        users[msg.sender] = User({balance: 100, isActive: true});
+        isUser[msg.sender] = true;
+    }
+
+    function transfer(address receiver, uint amount) public {
+        require(isUser[receiver], "Receiver does not exist");
+        require(users[msg.sender].balance >= amount, "Insufficient balance.");
+
+        users[msg.sender].balance -= amount;
+        users[receiver].balance += amount;
+    }
+}
+
+# map struct 2
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract Contract {
+    struct User {
+        uint balance;
+        bool isActive;
+    }
+
+    mapping(address => User) public users;
+    mapping(address => bool) public isUser;
+
+    function createUser() public {
+        require(!isUser[msg.sender], "User already exists.");
+        users[msg.sender] = User({balance: 100, isActive: true});
+        isUser[msg.sender] = true;
+    }
+
+    function transfer(address receiver, uint amount) public {
+        require(isUser[receiver], "Receiver does not exist");
+        require(users[msg.sender].balance >= amount, "Insufficient balance.");
+
+        users[msg.sender].balance -= amount;
+        users[receiver].balance += amount;
+    }
+}
+
+# nested maps
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract Contract {
+    enum ConnectionTypes {
+        Unacquainted,
+        Friend,
+        Family
+    }
+
+    struct User {
+        uint balance;
+        bool isActive;
+    }
+
+    mapping(address => User) public users;
+    mapping(address => bool) public isUser;
+    mapping(address => mapping(address => ConnectionTypes)) public connections;
+
+    function createUser() public {
+        require(!isUser[msg.sender], "User already exists.");
+        users[msg.sender] = User({balance: 100, isActive: true});
+        isUser[msg.sender] = true;
+    }
+
+    function transfer(address receiver, uint amount) public {
+        require(isUser[receiver], "Receiver does not exist");
+        require(users[msg.sender].balance >= amount, "Insufficient balance.");
+
+        users[msg.sender].balance -= amount;
+        users[receiver].balance += amount;
+    }
+
+    function connectWith(address other, ConnectionTypes connectionType) external {
+        connections[msg.sender][other] = connectionType;
+    }
+}
