@@ -8,6 +8,8 @@ Alchemy University – Learn Solidity
  Beginner-friendly course for mastering the fundamentals of Solidity and smart contract development on the Ethereum blockchain.
 
 
+
+
 🧑‍🤝‍🧑 Group Members
 
 Member 1: Abuzer Nasir (GitHub: @abuzer404)
@@ -26,7 +28,9 @@ Member 5: [Full Name] (GitHub: @username)
 
 
 
+
 📌 All members have successfully signed up for the course, completed the required modules.
+
 
 
 
@@ -45,6 +49,7 @@ Member 5: [Full Name] (GitHub: @username)
 
 
 
+
 🛠️ Tasks Completed
 
 
@@ -58,19 +63,20 @@ Member 5: [Full Name] (GitHub: @username)
 
 
 
+
 ✅ Uploaded:
 
 
-Course notes per lesson
+-Course notes per lesson
 
 
-All codebases and exercises
+-All codebases and exercises
 
 
-Screenshots showing learning milestones
+-Screenshots showing learning milestones
 
 
-Supplementary learning resources
+-Supplementary learning resources
 
 
 ✅ Maintained regular commits and transparent group collaboration
@@ -85,19 +91,21 @@ Submission Due: May 6, 2025
  Status: ✅ Completed and Submitted
 
 
+
+
 📝 How to Navigate This Repo
 
 
-Browse through Notes/ for conceptual summaries.
+-Browse through Notes/ for conceptual summaries.
 
 
-Explore Code/ to see Solidity smart contract implementations.
+-Explore Code/ to see Solidity smart contract implementations.
 
 
-View Screenshots/ to track progress visually.
+-View Screenshots/ to track progress visually.
 
 
-Check Resources/ for extra learning material related to Solidity and Ethereum.
+-Check Resources/ for extra learning material related to Solidity and Ethereum.
 
 
 
