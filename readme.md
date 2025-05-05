@@ -15,7 +15,7 @@ Member 3: Mohammed Jafar (GitHub: @waanofi) ID: ugr/22624/13
 
 Member 4: Mahilet Dinku.(GitHub: @Mahilet429) ID: Ugr/23087/13
 
-Member 5: Mifta Taju (GitHub: @miftataju) ID: Ugr/22879/13Full Name] (GitHub: @username)
+Member 5: Mifta Taju (GitHub: @miftataju) ID: Ugr/22879/13
 
 
 📌 All members have successfully signed up for the course, completed the required modules.
