@@ -31,3 +31,47 @@ contract Sidekick {
     }
 }
 
+========================
+# with signature
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract Sidekick {
+    function sendAlert(address hero, uint enemies, bool armed) external {
+        (bool success, ) = hero.call(
+            abi.encodeWithSignature("alert(uint256,bool)", enemies, armed)
+        );
+
+        require(success, "Alert failed");
+    }
+}
+
+===========================
+
+# Arbitrary Alert
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract Sidekick {
+    function relay(address hero, bytes memory data) external {
+        (bool success, ) = hero.call(data);
+        require(success, "Call to hero failed");
+    }
+}
+
+==========================
+
+# Fall back
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract Sidekick {
+    function makeContact(address hero) external {
+        // Trigger fallback by calling with random/unmatched data
+        (bool success, ) = hero.call(abi.encodeWithSignature("nonExistentFunction()"));
+        require(success, "Fallback call failed");
+    }
+}
