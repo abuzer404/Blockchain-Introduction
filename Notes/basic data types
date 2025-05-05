@@ -1,0 +1,56 @@
+### Basic Solidity Data Types
+
+Solidity is a statically-typed language designed for writing smart contracts on Ethereum and other EVM-compatible blockchains. In this tutorial, we’ll focus on the most fundamental data types in Solidity by storing them as **state variables**, which are variables that live on the blockchain as part of the contract's persistent storage.
+
+---
+
+### What Are State Variables?
+
+State variables are written directly to the blockchain. These are not temporary like local variables—they persist between function calls and transactions and cost gas to read/write.
+
+---
+
+###  1. Boolean (`bool`)
+```solidity
+bool public value = true;
+```
+- Represents a true or false value.
+- Commonly used for logical conditions and control flows.
+- Stored as 1 byte.
+
+---
+
+###  2. Integer (`int`)
+```solidity
+int public a = 10;
+```
+- Represents signed integers (both positive and negative).
+- Default size is `int256` unless otherwise specified.
+- Useful when you need negative values (e.g., balances, scores).
+
+---
+
+###  3. String
+```solidity
+string public msg = "Hello World";
+```
+- Used to store textual data.
+- Strings are dynamic arrays of UTF-8 characters.
+- They are relatively expensive in terms of gas cost, so use them cautiously.
+
+---
+
+### Importance
+Since smart contracts deal with digital value and live on a blockchain, understanding low-level behavior of these data types is crucial:
+- Mistakes in data types can lead to **loss of funds**, **bugs**, or **inefficient contracts**.
+- **Storage and computation cost gas**, which means you want to write as lean and efficient contracts as possible.
+
+---
+
+### Summary
+This example introduces:
+- A boolean to store a flag
+- A signed integer for numeric values
+- A string to store text
+
+These foundational types are the building blocks of any Solidity contract. Mastering them is the first step to writing secure, gas-efficient code.

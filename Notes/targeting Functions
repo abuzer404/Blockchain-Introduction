@@ -1,0 +1,34 @@
+/'''/ Targeting Functions in Smart Contracts
+
+In Solidity, targeting functions refers to calling or interacting with specific external functions in a deployed smart contract. This is common in testing, debugging, and inter-contract communication.
+
+# Types of Functions
+- External functions: Declared with the `external` visibility and meant to be called from outside the contract.
+  ```solidity
+  function greet() external view returns (string memory);
+  ```
+
+# How to Target a Function
+1. Direct Call (from another contract):
+   ```solidity
+   SomeContract(address).greet();
+   ```
+
+2. Using ABI (Application Binary Interface):
+   Tools like ethers.js, web3.js, or foundry use the ABI to call external functions.
+
+3. With Foundry (via forge):
+   In tests, you can call external functions using:
+   ```solidity
+   myContract.someFunction();
+   ```
+
+# Low-Level Call (when function signature is unknown or dynamic)
+```solidity
+(bool success, bytes memory data) = target.call(abi.encodeWithSignature("greet()"));
+```
+
+# Best Practices
+- Always check return values with low-level calls.
+- Prefer typed interfaces when possible for clarity and safety.
+- Validate function visibility (e.g., must be `external` or `public` to target it from outside).

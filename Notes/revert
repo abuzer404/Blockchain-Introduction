@@ -1,0 +1,14 @@
+'''Solidity: Revert 
+
+'''Purpose: To stop the current transaction and undo any state changes made during its execution. Think of it as saying, "Oops, something went wrong, let's go back to how things were before this action started."
+
+'''Triggers: You can explicitly trigger a revert using:
+revert();: Unconditional revert with no error message.
+
+revert("Reason string");: Revert with a descriptive error message, which can be helpful for debugging and understanding why the transaction failed.
+require(condition, "Reason string");: Checks a condition. If the condition is false, it reverts with the provided error message. This is a very common and readable way to enforce conditions.
+assert(condition);: Checks a condition that should never be false. If it is, it reverts (without a custom message in recent Solidity versions) and typically indicates a bug in your code. Use this for internal logic checks.
+
+Gas Refund: When a transaction reverts, any remaining gas that wasn't used for the computation is typically refunded to the sender (though there's a cost for the computation up to the point of the revert).
+
+Atomicity: Revert ensures atomicity – either the entire transaction succeeds, or it fails completely, leaving the contract's state unchanged from before the transaction started. This is crucial for maintaining data integrity on the blockchain.

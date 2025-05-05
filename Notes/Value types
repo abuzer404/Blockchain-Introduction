@@ -1,0 +1,62 @@
+Solidity Value Types
+=====================
+
+In Solidity, **value types** are types that hold their data directly in memory or storage and are passed by value. Here's an overview of four common ones:
+
+---
+
+🧮 uint (Unsigned Integer)
+---------------------------
+- A non-negative integer type.
+- You can specify sizes from `uint8` to `uint256` in 8-bit increments.
+- Default is `uint256`.
+
+```solidity
+uint256 age = 30;
+uint8 smallNumber = 250;
+```
+
+---
+
+➕ int (Signed Integer)
+------------------------
+- Allows both positive and negative numbers.
+- Like `uint`, you can choose sizes from `int8` to `int256`.
+
+```solidity
+int256 balance = -500;
+int8 temperature = 25;
+```
+
+---
+
+✅ bool (Boolean)
+------------------
+- Represents `true` or `false`.
+- Commonly used for conditional logic.
+
+```solidity
+bool isActive = true;
+bool hasVoted = false;
+```
+
+---
+
+📚 enum (Enumerations)
+----------------------
+- A user-defined type for a finite set of constant values.
+- Improves readability and control flow.
+
+```solidity
+enum Status { Pending, Shipped, Delivered, Cancelled }
+Status public orderStatus;
+
+function shipOrder() public {
+    orderStatus = Status.Shipped;
+}
+```
+
+---
+
+These types are foundational in Solidity and are used extensively in state variables, function parameters, and control structures.
+

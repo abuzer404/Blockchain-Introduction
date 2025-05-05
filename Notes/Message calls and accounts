@@ -1,0 +1,17 @@
+''' Solidity: Message Calls & Accounts 
+
+Accounts: Like digital identities on the blockchain. Two main types:
+
+Externally Owned Accounts (EOAs): Controlled by private keys (think your crypto wallet). Can initiate transactions.
+
+Contract Accounts: Controlled by their code. Can only execute code in response to transactions or other message calls.
+
+Message Calls: How accounts interact. An EOA sends a transaction to trigger a function in a contract, or one contract can call a function in another contract.
+
+msg object: Special global variable in Solidity providing info about the current message call:
+
+msg.sender: The address of the account that initiated the call.
+
+msg.value: The amount of Ether sent with the call (if any).
+msg.data: The raw bytes of the function call and its arguments.
+Gas: Message calls cost gas (ETH) to execute, especially when modifying the blockchain's state.

@@ -1,0 +1,62 @@
+Smart Contracts: Overview
+======================================
+
+🔐 Smart Contract Basics
+------------------------
+A **smart contract** is a self-executing program stored on the blockchain. It automates and enforces rules, such as financial agreements, without intermediaries.
+
+Example (Solidity):
+```solidity
+contract Agreement {
+  address recipient;
+  bool conditionIsMet;
+
+  function payout() external {
+    if(conditionIsMet) {
+      sendValue(recipient); // assumes a helper or low-level call here
+    }
+  }
+}
+```
+> ⚠️ Solidity doesn’t have `sendValue()` as a default — it would need to be a custom function or something like `recipient.call{value: amount}("");`.
+
+🚀 Deploying a Contract
+-----------------------
+Deployment is a **transaction that creates a contract**:
+
+1. **Compile**: Solidity code ➝ EVM bytecode.
+2. **Send Transaction**:
+   - `to` field is empty (indicates creation).
+   - `data` field holds the compiled creation bytecode.
+3. **Execution**:
+   - Node processes the bytecode and computes the **contract address** using `keccak256(sender, nonce)`.
+   - Returns this new address, with the **runtime bytecode** stored on-chain.
+
+⚙️ EVM Opcodes Snapshot
+-----------------------
+Each EVM instruction has an **opcode** and gas cost:
+
+| Opcode | Name  | Description            | Gas |
+|--------|-------|------------------------|------|
+| 0x00   | STOP  | Ends execution         | 0    |
+| 0x01   | ADD   | Adds two numbers       | 3    |
+| 0x02   | MUL   | Multiplies two numbers | 5    |
+| 0x03   | SUB   | Subtracts two numbers  | 3    |
+
+➡️ Full list: https://ethereum.org/en/developers/docs/evm/opcodes/
+
+📦 Contract Structure After Deployment
+-------------------------------------
+- **Address**: The location of your contract.
+- **Balance**: Contracts can hold ETH.
+- **Runtime Bytecode**: The actual executable part, separate from creation code.
+
+🔄 Transaction Life Cycle
+-------------------------
+| Step | Description |
+|------|-------------|
+| 🥾 Begin | Starts at an **Externally Owned Account (EOA)** |
+| ☝️ Order | Executed sequentially in a block |
+| ⛽️ Gas | Must specify a **gas limit** upfront |
+| 🎯 Calldata | Targets a function within a contract |
+| 🌐 Contract Calls | Smart contracts can invoke each other — all within a single transaction scope |

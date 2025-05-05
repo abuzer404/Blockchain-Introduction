@@ -7,10 +7,10 @@ Alchemy University – Learn Solidity
 
 
 🧑‍🤝‍🧑 Group Members
-Member 1: [Full Name] (GitHub: @username)
+Member 1: Abuzer Nasir (GitHub: @abuzer404)
 
 
-Member 2: [Full Name] (GitHub: @username)
+Member 2:Obsa Abdulkadir (GitHub: @Obsaabdu)
 
 
 Member 3: [Full Name] (GitHub: @username)
