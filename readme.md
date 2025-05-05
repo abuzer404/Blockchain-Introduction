@@ -8,7 +8,7 @@ Beginner-friendly course for mastering the fundamentals of Solidity and smart co
 
 🧑‍🤝‍🧑 Group Members
 
-Member 1: Abuzer Nasir (GitHub: @abuzer404)
+Member 1: Abuzer Nasir (GitHub: @abuzer404) ID: Ugr/22553/13
 
 Member 2:Obsa Abdulkadir (GitHub: @Obsaabdu)
 
