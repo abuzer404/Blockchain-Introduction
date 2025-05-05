@@ -1,4 +1,5 @@
 storing owner
+
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
@@ -13,6 +14,7 @@ contract Contract {
 =================
 
 ''' Recieve Ether.
+
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
@@ -31,6 +33,7 @@ contract Contract {
 }
 ================
 '''Tip Owner.
+
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
@@ -51,6 +54,7 @@ contract Contract {
 
 =================
 '''Charity.
+
 // SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.0;
@@ -76,6 +80,7 @@ contract Contract {
 }
 =================
 '''Selfdestruct.
+
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
