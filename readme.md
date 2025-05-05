@@ -14,9 +14,9 @@ Member 2:Obsa Abdulkadir (GitHub: @Obsaabdu): IDL ugr/22770/13
 
 Member 3: [Mohammed Jafar] (GitHub: @waanofi) ID: ugr/22624/13
 
-Member 4: [Full Name] (GitHub: @username)
+Member 4: Mahilet Dinku ID: Ugr/23087/13
 
-Member 5: [Full Name] (GitHub: @username)
+Member 5: Mifta Taju ID: Ugr/22879/13
 
 📌 All members have successfully signed up for the course, completed the required modules.
 
