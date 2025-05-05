@@ -1,0 +1,466 @@
+Storage Variables 
+pragma solidity ^0.8.0; 
+contract Contract { 
+bool public a = true; 
+bool public b = false; 
+} 
+Unsigned Integers 
+pragma solidity ^0.8.0; 
+contract Contract { 
+uint8 public a = 100;       
+uint16 public b = 300;      
+// value between 0 and 255 
+// value at least 256 
+uint256 public sum = a + b; // sum of a and b 
+} 
+Signed Integers 
+pragma solidity ^0.8.0; 
+contract Contract { 
+int8 public a = 10;          
+int8 public b = -15;         
+// positive int8 
+// negative int8 
+int16 public difference = a - b; // 10 - (-15) = 25 
+} 
+String Literals 
+pragma solidity ^0.8.0; 
+contract Contract { 
+bytes32 public msg1 = "Hello World";  
+string public msg2 = "This message is longer than thirty-two bytes!"; 
+} 
+Enum Type 
+pragma solidity ^0.8.0; 
+contract Contract { 
+enum Foods { Pizza, Sushi, Burger, Tacos } 
+Foods public food1 = Foods.Pizza; 
+Foods public food2 = Foods.Sushi; 
+Foods public food3 = Foods.Burger; 
+Foods public food4 = Foods.Tacos; 
+} 
+Solidity Arguments 
+// SPDX-License-Identifier: MIT 
+pragma solidity ^0.8.0; 
+contract Contract { 
+uint public x; 
+constructor(uint _x) { 
+x = _x; 
+} 
+} 
+Contract Functions 
+// SPDX-License-Identifier: MIT 
+pragma solidity ^0.8.0; 
+contract Contract { 
+uint public x; 
+constructor(uint _x) { 
+x = _x; 
+} 
+function increment() external { 
+x += 1; 
+} 
+}
+Fixed Arrays 
+// SPDX-License-Identifier: MIT 
+pragma solidity ^0.8.0; 
+contract SumCalculator { 
+// External function to calculate the sum of a fixed-size array 
+function sum(uint[5] memory numbers) external pure returns (uint) { 
+uint total = 0; 
+// Loop through the array and calculate the sum 
+for (uint i = 0; i < 5; i++) { 
+total += numbers[i]; 
+} 
+return total; 
+} 
+} 
+Structs 
+// SPDX-License-Identifier: MIT 
+pragma solidity ^0.8.0; 
+// Define the Choices enum 
+enum Choices { Yes, No, Maybe } 
+// Define the Vote struct 
+struct Vote { 
+Choices choice; 
+address voter; 
+} 
+contract Voting { 
+// Public storage variable to hold the vote 
+Vote public vote; 
+// Function to create a new vote 
+function createVote(Choices _choice) external { 
+// Create a new instance of Vote and store it in the vote variable 
+vote = Vote({ 
+choice: _choice, 
+voter: msg.sender 
+}); 
+} 
+} 
+Mapping 
+// SPDX-License-Identifier: UNLICENSED 
+pragma solidity ^0.8.13; 
+contract Contract { 
+// Public mapping from address to bool to track membership status 
+mapping(address => bool) public members; 
+// External function to add an address as a member 
+function addMember(address _member) external { 
+members[_member] = true; 
+} 
+} 
+Mapping Retrieval 
+// SPDX-License-Identifier: UNLICENSED 
+pragma solidity ^0.8.13; 
+contract Contract { 
+// Mapping to track membership status 
+mapping(address => bool) public members; 
+// Adds an address as a member 
+function addMember(address _member) external { 
+members[_member] = true; 
+} 
+// Returns true if the address is a member 
+function isMember(address _addr) external view returns (bool) { 
+return members[_addr]; 
+} 
+} 
+Mapping Removal 
+// SPDX-License-Identifier: UNLICENSED 
+pragma solidity ^0.8.13; 
+contract Contract { 
+// Mapping to track membership status 
+mapping(address => bool) public members; 
+// Adds an address as a member 
+function addMember(address _member) external { 
+members[_member] = true; 
+} 
+// Checks if an address is a member 
+function isMember(address _addr) external view returns (bool) { 
+return members[_addr]; 
+} 
+// Removes an address from membership 
+function removeMember(address _member) external { 
+members[_member] = false; 
+} 
+}
+Solidity Addresses 
+// SPDX-License-Identifier: MIT 
+pragma solidity ^0.8.0; 
+ 
+contract Contract { 
+    address public owner; 
+ 
+    constructor() { 
+        owner = msg.sender;  // Store the address that deploys the contract 
+    } 
+} 
+Receive Function 
+// SPDX-License-Identifier: MIT 
+pragma solidity ^0.8.0; 
+ 
+contract Contract { 
+    // This function allows the contract to receive ether without any calldata 
+    receive() external payable { 
+        // You can implement custom logic here to handle the received ether 
+    } 
+ 
+    // Add a function to view the contract's balance 
+    function getBalance() public view returns (uint) { 
+        return address(this).balance; 
+    } 
+} 
+Transferring Funds 
+// SPDX-License-Identifier: MIT 
+pragma solidity ^0.8.20; 
+ 
+contract Contract { 
+    address public owner; 
+ 
+    constructor() { 
+        owner = msg.sender; 
+    } 
+ 
+    // Function to receive tips and forward them to the owner 
+    function tip() public payable { 
+        (bool sent, ) = owner.call{ value: msg.value }(""); 
+        require(sent, "Transfer failed"); 
+    } 
+} 
+ 
+Reverting Transactions 
+pragma solidity ^0.8.0; 
+ 
+contract Contract { 
+    uint public x; 
+ 
+    // Payable constructor requiring a 1 ether deposit 
+    constructor() payable { 
+        // Ensure that at least 1 ether is sent to the contract 
+        require(msg.value >= 1 ether, "You must send at least 1 ether"); 
+ 
+        // If 1 ether is received, set x to the amount sent (in wei) 
+        x = msg.value; 
+    } 
+} 
+Restricting by Address 
+// SPDX-License-Identifier: MIT 
+pragma solidity ^0.8.0; 
+ 
+contract Contract { 
+    address public owner; 
+ 
+    // Error for unauthorized withdrawal 
+    error NotOwner(address caller); 
+ 
+    // Payable constructor to accept ether during deployment 
+    constructor() payable { 
+        owner = msg.sender;  // Set the owner to the address that deploys the contract 
+    } 
+ 
+    // Function to withdraw all funds to the owner's address 
+    function withdraw() external { 
+        // Ensure only the owner can withdraw 
+        if(msg.sender != owner) { 
+            revert NotOwner(msg.sender); 
+        } 
+ 
+        // Transfer all ether to the owner 
+        payable(owner).transfer(address(this).balance); 
+    } 
+ 
+    // Function to receive ether 
+    receive() external payable {} 
+} 
+ 
+Function Modifiers 
+// SPDX-License-Identifier: MIT 
+pragma solidity ^0.8.20; 
+ 
+contract OwnerRestricted { 
+    address public owner; 
+ 
+    constructor() { 
+        owner = msg.sender; 
+    } 
+ 
+    modifier onlyOwner() { 
+        require(msg.sender == owner, "Not the owner"); 
+        _; 
+} 
+uint public value; 
+function setValue(uint _value) external onlyOwner { 
+value = _value; 
+} 
+function changeOwner(address newOwner) external onlyOwner { 
+owner = newOwner; 
+} 
+} 
+Call Function 
+// SPDX-License-Identifier: MIT 
+pragma solidity ^0.8.20; 
+// Interface for the Hero contract 
+interface IHero { 
+function alert() external; 
+} 
+// Sidekick contract that calls alert on the Hero 
+contract Sidekick { 
+function sendAlert(address hero) external { 
+IHero(hero).alert(); 
+} 
+} 
+Function Signature 
+// SPDX-License-Identifier: MIT 
+pragma solidity ^0.8.20; 
+ 
+contract Sidekick { 
+    function sendAlert(address hero) external { 
+        // keccak256("alert()") = 
+0xc633fd39ca3d8c7765be031c2c3d638a2f360d08e4fd3e69f15516f8d4e3c34e 
+        // first 4 bytes: 0xc633fd39 
+        (bool success, ) = hero.call(abi.encodeWithSelector(0xc633fd39)); 
+        require(success, "Alert failed"); 
+    } 
+} 
+ 
+Setup ESCROW 
+// SPDX-License-Identifier: MIT 
+pragma solidity ^0.8.20; 
+ 
+contract Escrow { 
+    address public depositor; 
+    address public beneficiary; 
+    address public arbiter; 
+} 
+Constructor Storage 
+// SPDX-License-Identifier: MIT 
+pragma solidity ^0.8.20; 
+contract Escrow { 
+address public depositor; 
+address public beneficiary; 
+address public arbiter; 
+constructor(address _arbiter, address _beneficiary) { 
+depositor = msg.sender; 
+arbiter = _arbiter; 
+beneficiary = _beneficiary; 
+} 
+} 
+Funding 
+// SPDX-License-Identifier: MIT 
+pragma solidity ^0.8.20; 
+contract Escrow { 
+address public depositor; 
+address public beneficiary; 
+address public arbiter; 
+constructor(address _arbiter, address _beneficiary) payable { 
+depositor = msg.sender; 
+arbiter = _arbiter; 
+beneficiary = _beneficiary; 
+} 
+} 
+Approval 
+// SPDX-License-Identifier: MIT 
+pragma solidity ^0.8.20; 
+contract Escrow { 
+address public depositor; 
+address public beneficiary; 
+address public arbiter; 
+// Constructor to initialize the contract with the arbiter and beneficiary addresses 
+constructor(address _arbiter, address _beneficiary) payable { 
+depositor = msg.sender; 
+arbiter = _arbiter; 
+beneficiary = _beneficiary; 
+} 
+// Function to approve the transfer of funds from the contract to the beneficiary 
+function approve() external { 
+require(msg.sender == arbiter, "Only the arbiter can approve the transfer."); 
+require(address(this).balance > 0, "Contract has no funds to transfer."); 
+payable(beneficiary).transfer(address(this).balance); 
+} 
+} 
+Security 
+// SPDX-License-Identifier: MIT 
+pragma solidity ^0.8.20; 
+contract Escrow { 
+address public depositor; 
+address public beneficiary; 
+address public arbiter; 
+// Constructor to initialize the contract with the arbiter and beneficiary addresses 
+constructor(address _arbiter, address _beneficiary) payable { 
+depositor = msg.sender; 
+arbiter = _arbiter; 
+beneficiary = _beneficiary; 
+} 
+// Function to approve the transfer of funds from the contract to the beneficiary 
+function approve() external { 
+// Ensure only the arbiter can approve the transfer 
+require(msg.sender == arbiter, "Only the arbiter can approve the transfer."); 
+// Ensure the contract has a positive balance to transfer 
+require(address(this).balance > 0, "Contract has no funds to transfer."); 
+// Transfer the contract's balance to the beneficiary 
+payable(beneficiary).transfer(address(this).balance); 
+} 
+}
+Proposal storage 
+// SPDX-License-Identifier: UNLICENSED 
+pragma solidity ^0.8.20; 
+contract Voting { 
+// Define the Proposal struct 
+struct Proposal { 
+address target; 
+bytes callData; 
+uint yesCount; 
+uint noCount; 
+} 
+// Public array to store all proposals 
+Proposal[] public proposals; 
+// External function to create a new proposal 
+function newProposal(address _target, bytes calldata _callData) external { 
+proposals.push(Proposal({ 
+target: _target, 
+callData: _callData, 
+yesCount: 0, 
+noCount: 0 
+})); 
+} 
+} 
+Cast a Voting  
+// SPDX-License-Identifier: UNLICENSED 
+pragma solidity ^0.8.20; 
+contract Voting { 
+// Define the Proposal struct 
+struct Proposal { 
+address target; 
+bytes callData; 
+uint yesCount; 
+uint noCount; 
+} 
+// Public array to store all proposals 
+Proposal[] public proposals; 
+// External function to create a new proposal 
+function newProposal(address _target, bytes calldata _callData) external { 
+proposals.push(Proposal({ 
+target: _target, 
+callData: _callData, 
+yesCount: 0, 
+noCount: 0 
+})); 
+} 
+// External function to cast a vote on a proposal 
+function castVote(uint proposalId, bool support) external { 
+Proposal storage proposal = proposals[proposalId]; 
+if (support) { 
+proposal.yesCount++; 
+} else { 
+proposal.noCount++; 
+} 
+} 
+} 
+Multiple Votes 
+// SPDX-License-Identifier: UNLICENSED 
+pragma solidity ^0.8.20; 
+contract Voting { 
+struct Proposal { 
+address target; 
+bytes callData; 
+uint yesCount; 
+uint noCount; 
+} 
+Proposal[] public proposals; 
+// Tracks whether an address has voted on a specific proposal 
+mapping(uint => mapping(address => bool)) public hasVoted; 
+// Tracks the vote choice of an address on a specific proposal 
+mapping(uint => mapping(address => bool)) public voteChoice; 
+function newProposal(address _target, bytes calldata _callData) external { 
+proposals.push(Proposal({ 
+target: _target, 
+callData: _callData, 
+yesCount: 0, 
+noCount: 0 
+})); 
+} 
+function castVote(uint proposalId, bool support) external { 
+Proposal storage proposal = proposals[proposalId]; 
+if (hasVoted[proposalId][msg.sender]) { 
+// Voter has already voted 
+bool previousVote = voteChoice[proposalId][msg.sender]; 
+if (previousVote != support) { 
+// Adjust counts due to changed vote 
+if (previousVote) { 
+proposal.yesCount--; 
+proposal.noCount++; 
+} else { 
+proposal.noCount--; 
+proposal.yesCount++; 
+} 
+// Update stored vote 
+voteChoice[proposalId][msg.sender] = support; 
+} 
+// If vote hasn't changed, do nothing 
+} else { 
+// First-time voter on this proposal 
+if (support) { 
+proposal.yesCount++; 
+} else { 
+proposal.noCount++; 
+} 
+hasVoted[proposalId][msg.sender] = true; 
+voteChoice[proposalId][msg.sender] = support; 
+} 
+} 
+}
