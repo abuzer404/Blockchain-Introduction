@@ -25,6 +25,7 @@ Member 5: [Full Name] (GitHub: @username)
 📌 All members have successfully signed up for the course, completed the required modules.
 
 
+
 📁 Repository Structure
 . 
 ├── Notes/               # Lesson notes and learning summaries
