@@ -26,4 +26,4 @@ Arrays can be stored in **storage**, **memory**, or **calldata**, depending on u
 
 Arrays are powerful for managing lists of items like user addresses, balances, or records in contracts.
 
-Would you like a hands-on example with array operations?
+
